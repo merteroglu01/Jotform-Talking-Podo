@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Podo Assistant</title>
+
+  <link rel="stylesheet" href="style.css">
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+  <div id="mainContainer">
+    <div id="iframeDiv" style="height: 600px; width: 600px">
+
+      <iframe id="JotFormIFrame" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allowfullscreen="false"
+        allow="geolocation; microphone; camera" src="empty.html" frameborder="0" style="width: 1px; min-width: 100%; height:539px; border:none;"
+        scrolling="no"> </iframe>
+    </div>
+    <div class="podo">
+      <img src="img/podo.png" id="podo" style="margin-top:140px"/>
+
+      <hgroup class="speech-bubble">
+        <p class="speechBubbleText">Click Me If You Wanna Talk</p>
+      </hgroup>
+    </div>
+  </div>
+  <script src="static/js/SpeechApi.js"></script>
+  <div class="infoContainer" style="position:fixed; bottom:50px; width: 100%; text-align: center;font-size: larger">
+      <span id="formPrefix" style="color:orange"></span><a id="formLink" target="_blank" style="color:orange"></a>
+  </div>
+</body>
+
+</html>

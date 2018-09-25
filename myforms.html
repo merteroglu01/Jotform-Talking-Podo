@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>My Forms</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div id="mainContainer">
+        <h3 style="color:red">Your Forms:</h3>
+    </div>
+    <script language="javascript">
+        async function getMyForms() {
+            var url = "https://api.jotform.com/user/forms?limit=100&apiKey=" + await localStorage.getItem("jf_token");
+            return fetch(url, {
+                method: 'GET'
+            }).then(res => {
+                return res.json()
+            }).then(json => {
+                console.log(json);
+                if (json.responseCode == 200) {
+                    let container = document.querySelector("#mainContainer");
+                    var forms = json.content;
+                    var i = 0;
+                    console.log("length => " + forms.length);
+                    forms.map((form) => {
+                        if(form.status == "DELETED") return;
+                        let p = document.createElement('p');
+                        console.log(form.title);
+                        p.textContent = form.title;
+                        container.appendChild(p);
+                    });
+                }
+                else {
+                    return false;
+                }
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
+        window.onload = getMyForms();
+    </script>
+</body>
+
+</html>
